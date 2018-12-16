@@ -1,0 +1,6 @@
+# endpoint: ${env:PRISMA_ENDPOINT}
+endpoint: https://eu1.prisma.sh/neil-huyton-97f64b/booking-system-backend/dev
+datamodel: datamodel.prisma
+hooks:
+  post-deploy:
+    - graphql get-schema -p prisma

@@ -1,0 +1,45 @@
+# import * from './generated/prisma.graphql'
+
+type Query {
+  booking(id: ID!): Booking
+  bookingUnits: [BookingUnit]!
+  cart: Cart
+  cartUnits: [CartUnit!]!
+  units: [Unit!]!
+  unit(id: ID!): Unit
+}
+
+type Mutation {
+  addToCart(id: ID!, arrive: String!, depart: String!): CartUnit
+  createCart(id: ID!): Cart
+  createCustomer(firstName: String!, lastName: String): Customer
+  createBooking(
+    customerId: ID!
+    firstName: String!
+    lastName: String!
+    address1: String!
+    address2: String!
+    town: String!
+    county: String!
+    postCode: String!
+    country: String!
+    phone1: String!
+    phone2: String!
+    email: String!
+  ): Booking
+  createBookingUnit(
+    arrive: String!
+    depart: String!
+    bookingId: ID!
+    unitId: ID!
+  ): BookingUnit
+  createUnit(title: String!, description: String): Unit
+  updateUnit(id: ID!, title: String!, description: String): Unit
+  deleteUnit(id: ID!): Unit
+}
+
+type Unit {
+  id: ID!
+  title: String!
+  description: String!
+}

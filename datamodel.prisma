@@ -1,0 +1,50 @@
+type Unit {
+  id: ID! @unique
+  title: String!
+  description: String!
+}
+
+type Cart {
+  id: ID! @unique
+  cartUnits: [CartUnit!]!
+}
+
+type CartUnit {
+  id: ID! @unique
+  arrive: String!
+  depart: String!
+  quantity: Int! @default(value: 1)
+  cart: Cart!
+  unit: Unit!
+}
+
+type Customer {
+  id: ID! @unique
+  firstName: String!
+  lastName: String!
+  address1: String!
+  address2: String!
+  town: String!
+  county: String!
+  postCode: String!
+  country: String!
+  phone1: String!
+  phone2: String!
+  email: String! @unique
+  # bookings: [Booking!]!
+}
+
+type Booking {
+  id: ID! @unique
+  customer: Customer!
+  bookingUnits: [BookingUnit!]!
+}
+
+type BookingUnit {
+  id: ID! @unique
+  arrive: String!
+  depart: String!
+  quantity: Int! @default(value: 1)
+  booking: Booking!
+  unit: Unit!
+}
